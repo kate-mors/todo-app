@@ -1,0 +1,42 @@
+.list {
+  margin-bottom: 30px;
+
+  li {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    svg {
+      fill: #7c7c7c;
+    }
+
+    &icon {
+      &--plus {
+        stroke: #7c7c7c
+      }
+    }
+
+    &.active {
+      background: #FFFFFF;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+    }
+  }
+
+  &__add-task {
+    svg {
+      stroke: #7c7c7c;
+    }
+
+    &:hover,
+    &:focus {
+      color: #333333;
+      svg {
+        stroke: #333333;
+      }
+    }
+  }
+}

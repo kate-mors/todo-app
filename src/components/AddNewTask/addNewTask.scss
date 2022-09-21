@@ -1,0 +1,43 @@
+.add-new-task {
+  &__popup {
+    position: relative;
+    width: 235px;
+    height: 150px;
+    margin-left: 30px;
+    padding: 18px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+
+    .button {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__colors {
+    margin-top: 15px;
+    display: flex;
+    gap: 5px;
+
+    .badge {
+      width: 19px;
+      height: 19px;
+      border: 1px solid transparent;
+      cursor: pointer;
+
+      &.active {
+        border: 1px solid rgb(155, 121, 121);
+      }
+    }
+  }
+}
