@@ -5,9 +5,32 @@ import closeSvg from "../../assets/img/close.svg";
 
 import './addNewTask.scss';
 
-const AddNewTask = ({colors}) => {
+const AddNewTask = ({colors, onAdd}) => {
   const [openPopup, setOpenPopup] = useState(false);
-  const [selectedColor, setSelectedColor] = useState(colors[0].id)
+  const [selectedColor, setSelectedColor] = useState(colors[0].id);
+  const [inputValue, setInputValue] = useState('');
+
+  const onClose = () => {
+    setOpenPopup(false);
+    setInputValue('');
+    setSelectedColor(colors[0].id);
+  }
+
+  const addTask = () => {
+    if (!inputValue) {
+      alert('Add task name');
+      return;
+    }
+
+    const color = colors.filter(c => c.id === selectedColor)[0].name;
+
+    onAdd({
+      "id": Math.random(),
+      "name": inputValue,
+      "color": color
+    });
+    onClose();
+  }
 
   return (
     <div className="add-new-task">
@@ -50,10 +73,10 @@ const AddNewTask = ({colors}) => {
           <button
             type="button"
             className="add-new-task__close-btn"
-            onClick={() => setOpenPopup(!openPopup)}>
+            onClick={onClose}>
             <img src={closeSvg} alt="Close button" />
           </button>
-          <input type="text" className="field" placeholder="List name" />
+          <input type="text" className="field" value={inputValue} placeholder="List name" onChange={e => setInputValue(e.target.value)} />
           <div className="add-new-task__colors">
             {colors.map(color =>
               <Badge
@@ -62,7 +85,7 @@ const AddNewTask = ({colors}) => {
                 key={color.hex}
                 className={selectedColor === color.id && 'active'} />)}
           </div>
-          <button type="submit" className="button">Add task</button>
+          <button type="submit" className="button" onClick={ addTask }>Add task</button>
         </div>
       )}
     </div>

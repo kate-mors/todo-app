@@ -1,0 +1,116 @@
+.tasks {
+  $self: &;
+
+  &__title {
+    width: 100%;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 15px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #F2F2F2;
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 39px;
+      color: #64C4ED;
+    }
+
+    &:hover {
+      img {
+        opacity: 0.2;
+        cursor: pointer;
+      }
+    }
+
+    img {
+      opacity: 0;
+
+      &:hover,
+      &:active {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__items {
+    padding-top: 30px;
+  }
+
+  &__items-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+
+    &:hover #{$self}__remove-btn {
+      opacity: 0.2;
+    }
+  }
+
+  &__items-text {
+    margin-right: auto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
+  }
+
+  &__remove-btn {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  .checkbox {
+    input {
+      display: none;
+
+      &:checked~label {
+        background-color: #4DD599;
+        border-color: #4DD599;
+      }
+    }
+
+    label {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #E8E8E8;
+      border-radius: 30px;
+      cursor: pointer;
+
+      svg {
+        color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #F2F2F2;
+
+        svg {
+          color: #B3B3B3;
+        }
+      }
+    }
+  }
+}
