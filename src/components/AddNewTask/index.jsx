@@ -102,7 +102,8 @@ const AddNewTask = ({colors, onAdd}) => {
                 className={selectedColor === color.id && 'active'} />)}
           </div>
           <button type="submit" className="button" onClick={addTask}>
-            {isLoading ? 'Loading...' : 'Add task'}</button>
+            {isLoading ? 'Loading...' : 'Add task'}
+          </button>
         </div>
       )}
     </div>

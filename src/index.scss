@@ -43,6 +43,7 @@ body {
 .field {
   width: 100%;
   padding: 8px 12px;
+  font-size: 14px;
   background-color: #FFFFFF;
   border: 1px solid #EFEFEF;
   box-sizing: border-box;
@@ -56,6 +57,7 @@ body {
 
 .button {
   padding: 10px 20px;
+  font-size: 14px;
   color: #FFFFFF;
   background: #4DD599;
   border: 0;
@@ -69,5 +71,19 @@ body {
 
   &:active {
     background-color: darken($color: #4DD599, $amount: 12%);
+  }
+
+  &--clear {
+    color: #9C9C9C;
+    background-color: #F4F6F8;
+
+    &:hover,
+    &:focus-visible {
+      background-color: darken($color: #F4F6F8, $amount: 6%);
+    }
+
+    &:active {
+      background-color: darken($color: #F4F6F8, $amount: 12%);
+    }
   }
 }

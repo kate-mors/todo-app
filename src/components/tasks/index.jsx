@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import iconEdit from '../../assets/img/edit.svg';
 import iconClose from '../../assets/img/add.svg';
+import AddTaskForm from "./addTaskForm";
 
-import './tasks.scss'
+import './tasks.scss';
 
 const Tasks = ({ list, onEditTitle }) => {
   
@@ -11,9 +12,13 @@ const Tasks = ({ list, onEditTitle }) => {
     const newTitle = window.prompt('List title', list.name);
     if (newTitle) {
       onEditTitle(list.id, newTitle)
-      axios.patch('http://localhost:3001/lists' + list.id, { name: newTitle }).catch(() => {
-        alert("Couldn't update the list name")
-      });
+      axios
+        .patch('http://localhost:3001/lists/' + list.id, {
+          name: newTitle
+        })
+        .catch(() => {
+          alert("Couldn't update the list name")
+        });
     }
   }
 
@@ -26,7 +31,7 @@ const Tasks = ({ list, onEditTitle }) => {
       <div className="tasks__items">
         {!list.tasks.length && <h2>No tasks</h2>}
         {list.tasks.map(task => (
-          <div  key={task.id} className="tasks__items-row">
+          <div key={task.id} className="tasks__items-row">
             <div className="checkbox">
               <input type="checkbox" id={`task-${task.id}`} />
               <label htmlFor={`task-${task.id}`} >
@@ -43,6 +48,7 @@ const Tasks = ({ list, onEditTitle }) => {
             </button>
           </div>
         ))}
+        <AddTaskForm />
       </div>
     </div>
   )

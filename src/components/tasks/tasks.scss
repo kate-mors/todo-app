@@ -60,6 +60,10 @@
     align-items: center;
     gap: 15px;
 
+    &:last-child {
+      margin-bottom: 30px;
+    }
+
     &:hover #{$self}__remove-btn {
       opacity: 0.2;
     }
@@ -88,6 +92,55 @@
 
     &:active {
       opacity: 0.7;
+    }
+  }
+
+  &__form {
+    margin-top: 10px;
+  }
+
+  &__form-new {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+
+    span {
+      font-size: 16px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.8;
+    }
+  }
+
+  &__add-btn {
+    width: 24px;
+    height: auto;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  &__form-block {
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .button {
+      margin-right: 10px;
     }
   }
 
