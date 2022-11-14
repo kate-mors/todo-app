@@ -1,22 +1,35 @@
-import React, { useState } from "react";
-import AddNewTask from "./components/AddNewTask";
-import List from './components/List';
-import DB from './assets/db.json';
-import Tasks from "./components/tasks";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+
+import { List, AddNewTask, Tasks } from "./components";
 
 function App() {
-  const [lists, setLists] = useState(
-    DB.lists.map(item => {
-      item.color = DB.colors.filter(
-        color => color.id === item.colorId)[0].name;
-      return item
-    })
-  );
+  const [lists, setLists] = useState(null);
+  const [colors, setColors] = useState(null);
+  const [activeItem, setActiveItem] = useState(null)
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({ data }) => {
+      setLists(data);
+    });
+    axios.get('http://localhost:3001/colors').then(({ data }) => {
+      setColors(data);
+    });
+  }, [])
 
   const onAddTask = (obj) => {
     const newTask = [...lists, obj];
     setLists(newTask);
-    console.log(newTask);
+  };
+
+  const onEditListTitle = (id, title) => {
+    const newList = lists.map(list => {
+      if (list.id === id) {
+        list.name = title
+      }
+      return list
+    });
+    setLists(newList);
   };
 
   return (
@@ -44,18 +57,26 @@ function App() {
             },
           ]}
         />
-        <List
-          items={lists}
-          onRemove={(qwe) => {
-            console.log(qwe);
-          }}
-          isRemovable
-        />
-        <AddNewTask onAdd={onAddTask} colors={DB.colors} />
+        {console.log(activeItem)}
+        {lists ? (
+          <List
+            items={lists}
+            onRemove={(id) => {
+              const newLists = lists.filter(item => item.id !== id);
+              setLists(newLists);
+            }}
+            onClickItem={item => {
+              setActiveItem(item);
+            }}
+            activeItem={activeItem}
+            isRemovable
+          />
+        ) : (
+          'Loading...'
+        )}
+        <AddNewTask onAdd={onAddTask} colors={colors} />
       </div>
-      <div className='todo__tasks'>
-        <Tasks />
-      </div>
+      <div className='todo__tasks'>{lists && activeItem && <Tasks list={activeItem} onEditTitle={onEditListTitle} />}</div>
     </div>
   );
 }

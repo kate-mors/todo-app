@@ -40,6 +40,17 @@
 
   &__items {
     padding-top: 30px;
+
+    h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-family: 'Montserrat';
+      font-weight: 700;
+      font-size: 22px;
+      color: #C9D1D3;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__items-row {
@@ -76,7 +87,7 @@
     transition: opacity 0.5s ease;
 
     &:active {
-      opacity: 0.8;
+      opacity: 0.7;
     }
   }
 

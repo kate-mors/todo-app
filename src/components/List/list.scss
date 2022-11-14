@@ -19,7 +19,12 @@
     }
 
     span {
+      width: 160px;
       margin-right: auto;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
     }
 
     &icon {
