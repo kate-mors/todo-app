@@ -117,12 +117,13 @@
   }
 
   &__add-btn {
-    width: 24px;
+    width: fit-content;
     height: auto;
     padding: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     background-color: transparent;
     border: none;
     cursor: pointer;

@@ -73,6 +73,10 @@ body {
     background-color: darken($color: #4DD599, $amount: 12%);
   }
 
+  &:disabled {
+    background-color: #9C9C9C;
+  }
+
   &--clear {
     color: #9C9C9C;
     background-color: #F4F6F8;

@@ -43,6 +43,9 @@ const AddNewTask = ({colors, onAdd}) => {
         onAdd(listObj);
         onClose();
       })
+      .catch(() => {
+        alert('error adding list')
+      })
       .finally(() => {
         setIsLoading(false);
       });
