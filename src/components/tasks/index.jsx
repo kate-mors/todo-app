@@ -6,7 +6,7 @@ import AddTaskForm from "./addTaskForm";
 
 import './tasks.scss';
 
-const Tasks = ({ list, onEditTitle, onAddTask }) => {
+const Tasks = ({ list, onEditTitle, onAddTask, withoutEmpty }) => {
   
   const editTitle = () => {
     const newTitle = window.prompt('List title', list.name);
@@ -29,7 +29,7 @@ const Tasks = ({ list, onEditTitle, onAddTask }) => {
         <img src={iconEdit} onClick={editTitle} alt="Edit task title."/>
       </button>
       <div className="tasks__items">
-        {!list.tasks.length && <h2>No tasks</h2>}
+        {!withoutEmpty && !list.tasks.length && <h2>No tasks</h2>}
         {list.tasks.map(task => (
           <div key={task.id} className="tasks__items-row">
             <div className="checkbox">
